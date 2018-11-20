@@ -9,8 +9,8 @@ import java.math.BigDecimal;
 
 /**
  ** Class Node reflects the position and weight of graph vertex
- *  
- * 
+ *
+ *
  * @author dnikiforov
  */
 public final class Node implements Comparable<Node> {
@@ -24,7 +24,6 @@ public final class Node implements Comparable<Node> {
 	//Geographical coordinates
 	private final BigDecimal x, y;
 
-	
 	//Node does not have default or no-arg constructor
 	public Node(BigDecimal value, int index, BigDecimal x, BigDecimal y) {
 		this.value = value;
@@ -40,8 +39,8 @@ public final class Node implements Comparable<Node> {
 		this.x = x;
 		this.y = y;
 		this.visited = visited;
-	}	
-	
+	}
+
 	public BigDecimal getX() {
 		return x;
 	}
@@ -97,22 +96,15 @@ public final class Node implements Comparable<Node> {
 
 	@Override
 	public int compareTo(Node t) {
-		if (t.visited == true && this.visited == false) {
+		if (t.value == null && this.value != null) {
 			return -1;
-		} else if (t.visited == this.visited) {
-			if (t.value == null && this.value != null) {
-				return -1;
-			} else if (this.value == null && t.value == null) {
-				return 0;
-			} else if (this.value == null && t.value != null) {
-				return 1;
-			} else {
-				return this.value.compareTo(t.value);
-			}
-		} else if (t.visited == false && this.visited == true) {
+		} else if (this.value == null && t.value == null) {
+			return 0;
+		} else if (this.value == null && t.value != null) {
 			return 1;
+		} else {
+			return this.value.compareTo(t.value);
 		}
-		return 0;
 	}
 
 	@Override
