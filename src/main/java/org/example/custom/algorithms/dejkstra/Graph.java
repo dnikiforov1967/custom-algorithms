@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -22,7 +23,7 @@ public final class Graph {
 	//Original order
 	private final List<Node> nodes = new ArrayList<>();
 	//Dynamic order
-	private final List<Node> sortedNodes = new ArrayList<>();
+	private final List<Node> sortedNodes = new LinkedList<>();
 	//Array of ages
 	private final BigDecimal[][] edges;
 
@@ -37,7 +38,9 @@ public final class Graph {
 	}
 	
 
-	//Order nodes by visited,value asc
+	/**
+	 *  Method for nodes sorting. TODO - more optimal way to get node with minimal weight
+	 */
 	private void sort() {
 		Collections.sort(sortedNodes);
 	}
@@ -69,6 +72,9 @@ public final class Graph {
 
 	}
 
+	/**
+	 * Method to weight neighbors of next vertex
+	 */
 	private void weightNeighbors() {
 		final Node vertex = sortedNodes.get(0);
 		BigDecimal valueStart = vertex.getValue();
