@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 /**
+ ** This class provides methods to find optimal ways between vertexes in weighted equal-directional graph
  *
  * @author dnikiforov
  */
@@ -52,6 +53,9 @@ public final class Graph {
 		return unmodifiableList;
 	}
 
+	/**
+	 ** Method to find weights of vertexes in graph
+	*/
 	public void findWeights() {
 		sort();
 		final Node start = sortedNodes.get(0);
