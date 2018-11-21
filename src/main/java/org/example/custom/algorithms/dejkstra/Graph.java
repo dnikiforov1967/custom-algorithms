@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.TreeMap;
 import java.util.stream.Stream;
 
 /**
@@ -28,7 +29,7 @@ public final class Graph {
 	private final List<Node> sortedNodes = new LinkedList<>();
 	//Array of ages
 	private final BigDecimal[][] edges;
-
+	
 	public Graph(BigDecimal[][] edges, Node... nodes) {
 		this.edges = edges;
 		final Stream<Node> stream = Arrays.stream(nodes);
@@ -37,14 +38,6 @@ public final class Graph {
 			this.nodes.add(t);
 			this.sortedNodes.add(t);
 		});
-	}
-
-	/**
-	 * Method for nodes sorting. TODO - more optimal way to get node with
-	 * minimal weight
-	 */
-	private void sort() {
-		Collections.sort(sortedNodes);
 	}
 
 	/**
