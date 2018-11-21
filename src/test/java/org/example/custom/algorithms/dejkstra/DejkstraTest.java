@@ -43,70 +43,6 @@ public class DejkstraTest {
 	}
 
 	@Test
-	public void dejkstraCompareAndFind() {		
-	
-		BigDecimal[][] edges = {
-			{null, new BigDecimal("7.0"), new BigDecimal("9.0"), null, null, new BigDecimal("14.0")},
-			{new BigDecimal("7.0"), null, new BigDecimal("10.0"), new BigDecimal("15.0"), null, null},
-			{new BigDecimal("9.0"), new BigDecimal("10.0"), null, new BigDecimal("11.0"), null, new BigDecimal("2.0")},
-			{null, new BigDecimal("15.0"), new BigDecimal("11.0"), null, new BigDecimal("6.0"), null},
-			{null, null, null, new BigDecimal("6.0"), null, new BigDecimal("9.0")},
-			{new BigDecimal("14.0"), null, new BigDecimal("2.0"), null, new BigDecimal("9.0"), null}
-		};
-		
-		Node[] nodes = {
-			new Node(BigDecimal.ZERO, 0, BigDecimal.ZERO, BigDecimal.ZERO),
-			new Node(null, 1, BigDecimal.ZERO, BigDecimal.ZERO),
-			new Node(null, 2, BigDecimal.ZERO, BigDecimal.ZERO),
-			new Node(null, 3, BigDecimal.ZERO, BigDecimal.ZERO),
-			new Node(null, 4, BigDecimal.ZERO, BigDecimal.ZERO),
-			new Node(null, 5, BigDecimal.ZERO, BigDecimal.ZERO)
-		};
-		
-		final Graph graph = new Graph(edges, nodes);
-		
-		Node next = graph.findNextNodeAndModifyList();
-		assertEquals(next, nodes[0]);
-		
-		nodes[0].setVisited(true);
-		nodes[1].setValue(new BigDecimal("7.0"));
-		nodes[2].setValue(new BigDecimal("9.0"));
-		nodes[5].setValue(new BigDecimal("14.0"));
-		
-		next = graph.findNextNodeAndModifyList();
-		assertEquals(next, nodes[1]);
-		
-		nodes[1].setVisited(true);		
-		nodes[3].setValue(new BigDecimal("22.0"));
-		
-		next = graph.findNextNodeAndModifyList();
-		assertEquals(next, nodes[2]);
-
-		nodes[2].setVisited(true);		
-		nodes[3].setValue(new BigDecimal("20.0"));
-		nodes[5].setValue(new BigDecimal("11.0"));
-
-		next = graph.findNextNodeAndModifyList();
-		assertEquals(next, nodes[5]);
-		
-		nodes[5].setVisited(true);
-		nodes[4].setValue(new BigDecimal("20.0"));
-
-		next = graph.findNextNodeAndModifyList();
-		assertEquals(next, nodes[3]);
-		
-		nodes[3].setVisited(true);
-		next = graph.findNextNodeAndModifyList();
-		assertEquals(next, nodes[4]);
-
-		nodes[4].setVisited(true);
-		next = graph.findNextNodeAndModifyList();
-		assertNull(next);
-		
-	}	
-	
-
-	@Test
 	public void dejkstraCompletedTest() {
 		
 		BigDecimal[][] edges = {
@@ -173,7 +109,7 @@ public class DejkstraTest {
 			new Node(new BigDecimal("7.0"), 1, BigDecimal.ZERO, BigDecimal.ZERO, true),
 			new Node(new BigDecimal("9.0"), 2, BigDecimal.ZERO, BigDecimal.ZERO, true),
 			new Node(new BigDecimal("20.0"), 3, BigDecimal.ZERO, BigDecimal.ZERO, true),
-			new Node(null, 4, BigDecimal.ZERO, BigDecimal.ZERO, true),
+			new Node(new BigDecimal(Double.MAX_VALUE), 4, BigDecimal.ZERO, BigDecimal.ZERO, true),
 			new Node(new BigDecimal("11.0"), 5, BigDecimal.ZERO, BigDecimal.ZERO, true)
 		};
 		

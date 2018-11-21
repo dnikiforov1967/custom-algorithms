@@ -46,32 +46,12 @@ public class NodeComparableTest {
 		Node nodeA = new Node(null, 1, BigDecimal.ONE, BigDecimal.ONE);
 		Node nodeB = new Node(null, 1, BigDecimal.ONE, BigDecimal.ONE);
 		
-		nodeA.setVisited(false);
-		nodeB.setVisited(true);
-		int compareTo = nodeA.compareTo(nodeB);
-		assertEquals(-1, compareTo);
-		
-		nodeA.setVisited(true);
-		nodeB.setVisited(false);
-		compareTo = nodeA.compareTo(nodeB);
-		assertEquals(1, compareTo);
-
-		nodeA.setVisited(true);
-		nodeB.setVisited(true);		
-		compareTo = nodeA.compareTo(nodeB);
-		assertEquals(0, compareTo);
-		
-		nodeA.setVisited(false);
-		nodeB.setVisited(false);		
-		compareTo = nodeA.compareTo(nodeB);
-		assertEquals(0, compareTo);
-		
 		nodeA.setValue(BigDecimal.ONE);
-		nodeB.setValue(null);
-		compareTo = nodeA.compareTo(nodeB);
+		nodeB.setValue(new BigDecimal(Double.MAX_VALUE));
+		int compareTo = nodeA.compareTo(nodeB);
 		assertEquals(-1, compareTo);		
 
-		nodeA.setValue(null);
+		nodeA.setValue(new BigDecimal(Double.MAX_VALUE));
 		nodeB.setValue(BigDecimal.ONE);
 		compareTo = nodeA.compareTo(nodeB);
 		assertEquals(1, compareTo);		
@@ -82,4 +62,5 @@ public class NodeComparableTest {
 		assertEquals(0, compareTo);		
 		
 	}
+
 }

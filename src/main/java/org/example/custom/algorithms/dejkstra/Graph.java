@@ -12,6 +12,8 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.NavigableMap;
 import java.util.TreeMap;
 import java.util.stream.Stream;
 
@@ -29,15 +31,57 @@ public final class Graph {
 	private final List<Node> sortedNodes = new LinkedList<>();
 	//Array of ages
 	private final BigDecimal[][] edges;
-	
+
+	//Binary red-black heap. Many nodes can have the same value - important !
+	NavigableMap<BigDecimal, NavigableMap<Integer, Node>> vertexToCheck = new TreeMap<>();
+
 	public Graph(BigDecimal[][] edges, Node... nodes) {
 		this.edges = edges;
 		final Stream<Node> stream = Arrays.stream(nodes);
 		//Append in both arrays
 		stream.forEach((t) -> {
+			if (t.getValue() == null) {
+				//Undefind values should be set to max possible double
+				t.setValue(new BigDecimal(Double.MAX_VALUE));
+			}
 			this.nodes.add(t);
-			this.sortedNodes.add(t);
+			appendVertexToMap(t);
 		});
+	}
+
+	void appendVertexToMap(Node vertex) {
+		final BigDecimal value = vertex.getValue();
+		NavigableMap<Integer, Node> map = vertexToCheck.get(value);
+		if (map == null) {
+			map = new TreeMap<>();
+			vertexToCheck.put(value, map);
+		}
+		map.put(vertex.getIndex(), vertex);
+	}
+
+	Node extractNextNode() {
+		Node node = null;
+		final Map.Entry<BigDecimal, NavigableMap<Integer, Node>> firstEntry = vertexToCheck.firstEntry();
+		if (firstEntry != null) {
+			final NavigableMap<Integer, Node> map = firstEntry.getValue();
+			node = map.pollFirstEntry().getValue();
+			if (map.isEmpty()) {
+				vertexToCheck.remove(node.getValue());
+			}
+		}
+		return node;
+	}
+
+	void removeVertexFromMap(Node vertex) {
+		final BigDecimal value = vertex.getValue();
+		final NavigableMap<Integer, Node> map = vertexToCheck.get(value);
+		if (map == null) {
+			return;
+		}
+		map.remove(vertex.getIndex());
+		if (map.isEmpty()) {
+			vertexToCheck.remove(vertex.getValue());
+		}
 	}
 
 	/**
@@ -77,7 +121,8 @@ public final class Graph {
 	 */
 	public void weightNodes() {
 		Node vertex = null;
-		while ((vertex = findNextNodeAndModifyList()) != null) {
+		//Extract node to heap and check for nullity
+		while ((vertex = extractNextNode()) != null) {
 			BigDecimal valueStart = vertex.getValue();
 			int index = vertex.getIndex();
 			BigDecimal[] paths = edges[index];
@@ -91,13 +136,20 @@ public final class Graph {
 					}
 					BigDecimal proposedValue = valueStart.add(path);
 					//If neighbor node has undefined value or new value is less, update value
-					if (get.getValue() == null || proposedValue.compareTo(get.getValue()) == -1) {
-						get.setValue(proposedValue);
+					if (proposedValue.compareTo(get.getValue()) == -1) {
+						rebalanceVertex(get, proposedValue);
 					}
 				}
 			}
 			vertex.setVisited(true);
 		}
+	}
+
+	void rebalanceVertex(final Node get, final BigDecimal proposedValue) {
+		//KEY IS CHANGED !!!
+		removeVertexFromMap(get);
+		get.setValue(proposedValue);
+		appendVertexToMap(get);
 	}
 
 }
