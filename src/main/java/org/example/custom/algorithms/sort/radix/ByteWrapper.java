@@ -13,7 +13,7 @@ import java.util.Arrays;
  */
 public abstract class ByteWrapper<T> implements ByteConvertable {
 	
-	private final int fixedLength;
+	protected final int fixedLength;
 	private final byte[] byteArray;
 	protected final T obj;
 	
@@ -30,6 +30,10 @@ public abstract class ByteWrapper<T> implements ByteConvertable {
 		}
 	}
 
+        /**
+         * Method maps object to byte array
+         * @return 
+         */
 	abstract protected byte[] convert();
 	
 	@Override
