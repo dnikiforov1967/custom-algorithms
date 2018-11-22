@@ -163,7 +163,7 @@ public class GenericRadixUnitTest {
             };        
 
         GenericRadixSort<StringWrapper> grs = new GenericRadixSort<>();
-        array = (StringWrapper[]) grs.sort(array, 2);
+        array = grs.sort(array, 2);
 
         assertArrayEquals(expectedArray, array);
 
@@ -193,7 +193,7 @@ public class GenericRadixUnitTest {
             };        
 
         GenericRadixSort<StringWrapperPadded> grs = new GenericRadixSort<>();
-        array = (StringWrapperPadded[]) grs.sort(array, 2);
+        array = grs.sort(array, 2);
 
         assertArrayEquals(expectedArray, array);
 

@@ -13,7 +13,7 @@ public class GenericRadixSort<T extends ByteWrapper> {
 
     private final int[] counters = new int[127]; //0..127 by byte value
 
-    public Object[] sort(T[] array, int byteCount) {
+    public T[] sort(T[] array, int byteCount) {
 
         Object[] storage = new Object[array.length];
         Object[] source = array, target = storage;
@@ -47,7 +47,7 @@ public class GenericRadixSort<T extends ByteWrapper> {
             source = target;
             target = swap;
         }
-        return source;
+        return (T[])source;
     }
 
 }
