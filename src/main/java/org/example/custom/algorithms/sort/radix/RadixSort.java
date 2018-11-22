@@ -5,10 +5,14 @@
  */
 package org.example.custom.algorithms.sort.radix;
 
-public class RadixSort {
+/**
+ *
+ * @author dnikiforov
+ */
+public final class RadixSort {
 
-	int RADIX = 0xFF;
-	int[] counters = new int[256]; //0..255 by radix
+	private int RADIX = 0xFF;
+	private int[] counters = new int[256]; //0..255 by radix
 
 	public void sort(int[] A) {
 		//Integer consists of 4 bytes in Java. This is universal rule
