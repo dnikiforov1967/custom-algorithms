@@ -14,20 +14,12 @@ public final class RadixSort {
 	private final int RADIX = 0xFF;
 	private final int[] counters = new int[256]; //0..255 by radix
 
-	public void sort(int[] A) {
+	public int[] sort(int[] A) {
 		//Integer consists of 4 bytes in Java. This is universal rule
 		int[] B = new int[A.length];
-		int[] source, target;
+		int[] source = A, target = B;
 		int index = 0;
 		for(int j = 1; j <= 4; j++) { //Four steps
-			if (j%2 == 1) {
-				source = A;
-				target = B;
-			}
-			else {
-				source = B;
-				target = A;
-			}
 			for (int i = 0; i<source.length; i++)
 				counters[(source[i] >> 8*(j-1)) & RADIX]++; //Find radix value - byte's AND - in this case let's increase
 			for (int i= 1; i<counters.length; i++) counters[i] += counters[i-1];
@@ -38,7 +30,9 @@ public final class RadixSort {
 				target[counters[index]] = source[i];
 			}	
 			for (int i= 1; i<counters.length; i++) counters[i] = 0;
+			source = target;
 		}
+		return source;
 	}
 
 }
