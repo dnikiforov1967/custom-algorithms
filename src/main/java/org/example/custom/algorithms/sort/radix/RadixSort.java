@@ -11,8 +11,8 @@ package org.example.custom.algorithms.sort.radix;
  */
 public final class RadixSort {
 
-	private int RADIX = 0xFF;
-	private int[] counters = new int[256]; //0..255 by radix
+	private final int RADIX = 0xFF;
+	private final int[] counters = new int[256]; //0..255 by radix
 
 	public void sort(int[] A) {
 		//Integer consists of 4 bytes in Java. This is universal rule
