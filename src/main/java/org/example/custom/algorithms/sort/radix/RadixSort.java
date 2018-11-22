@@ -30,7 +30,9 @@ public final class RadixSort {
 				target[counters[index]] = source[i];
 			}	
 			for (int i= 1; i<counters.length; i++) counters[i] = 0;
+                        int[] swap = source;
 			source = target;
+                        target = swap;
 		}
 		return source;
 	}
