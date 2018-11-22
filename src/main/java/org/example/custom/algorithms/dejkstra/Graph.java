@@ -43,18 +43,16 @@ public final class Graph {
 			return;
 		}
 		final Stream<String[]> edgesStream = Arrays.stream(edges);
-		this.edges = edgesStream.map(new Function<String[], BigDecimal[]>() {
-			@Override
-			public BigDecimal[] apply(String[] t) {
-				final Stream<BigDecimal> map
-						= Arrays.stream(t).map(
-								(e) -> {
-									return (e == null ? null : new BigDecimal(e));
-								});
-				final BigDecimal[] toArray = map.toArray(BigDecimal[]::new);
-				return toArray;
-			}
-		}).toArray(BigDecimal[][]::new);		
+		this.edges = edgesStream.<BigDecimal[]>map((t) -> {
+			final Stream<BigDecimal> map
+					= Arrays.stream(t).map(
+							(e) -> {
+								return (e == null ? null : new BigDecimal(e));
+							});
+			final BigDecimal[] toArray = map.toArray(BigDecimal[]::new);
+			return toArray;
+		}
+		).toArray(BigDecimal[][]::new);
 	}
 
 	public Graph(Double[][] edges, Node... nodes) {
@@ -64,17 +62,14 @@ public final class Graph {
 			return;
 		}
 		final Stream<Double[]> edgesStream = Arrays.stream(edges);
-		this.edges = edgesStream.map(new Function<Double[], BigDecimal[]>() {
-			@Override
-			public BigDecimal[] apply(Double[] t) {
-				final Stream<BigDecimal> map
-						= Arrays.stream(t).map(
-								(e) -> {
-									return (e == null ? null : new BigDecimal(e));
-								});
-				final BigDecimal[] toArray = map.toArray(BigDecimal[]::new);
-				return toArray;
-			}
+		this.edges = edgesStream.<BigDecimal[]>map((t) -> {
+			final Stream<BigDecimal> map
+					= Arrays.stream(t).map(
+							(e) -> {
+								return (e == null ? null : new BigDecimal(e));
+							});
+			final BigDecimal[] toArray = map.toArray(BigDecimal[]::new);
+			return toArray;
 		}).toArray(BigDecimal[][]::new);
 	}
 
@@ -82,9 +77,9 @@ public final class Graph {
 		final Stream<Node> stream = Arrays.stream(nodes);
 		stream.forEach((t) -> {
 			//Undefind values should be set to null if index is 0
-			if (t.getIndex() == 0 && t.getValue()==null) {
+			if (t.getIndex() == 0 && t.getValue() == null) {
 				t.setValue(BigDecimal.ZERO);
-			} else if (t.getValue()==null) {
+			} else if (t.getValue() == null) {
 				//Undefind values should be set to max possible double
 				t.setValue(new BigDecimal(Double.MAX_VALUE));
 			}
