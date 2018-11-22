@@ -40,7 +40,7 @@ public class GraphUnitTest {
 
 	@Test
 	public void testNodeExtraction() {
-		Graph graph = new Graph(null,
+		Graph graph = new Graph((Double[][])null,
 				new Node(BigDecimal.TEN, 0, BigDecimal.TEN, BigDecimal.TEN),
 				new Node(BigDecimal.ONE, 1, BigDecimal.ONE, BigDecimal.ONE),
 				new Node(BigDecimal.ONE, 2, BigDecimal.ONE, BigDecimal.ONE));
@@ -64,7 +64,7 @@ public class GraphUnitTest {
 			new Node(BigDecimal.ONE, 3, BigDecimal.ONE, BigDecimal.ONE)
 		};
 
-		Graph graph = new Graph(null,nodes);
+		Graph graph = new Graph((String[][])null,nodes);
 
 		Node node = graph.extractNextNode();
 		assertEquals(2, node.getIndex());

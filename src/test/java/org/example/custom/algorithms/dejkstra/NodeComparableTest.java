@@ -43,8 +43,8 @@ public class NodeComparableTest {
 	//
 	@Test
 	public void testComparable() {
-		Node nodeA = new Node(null, 1, BigDecimal.ONE, BigDecimal.ONE);
-		Node nodeB = new Node(null, 1, BigDecimal.ONE, BigDecimal.ONE);
+		Node nodeA = new Node(1, 0, 0);
+		Node nodeB = new Node(1, 0, 0);
 		
 		nodeA.setValue(BigDecimal.ONE);
 		nodeB.setValue(new BigDecimal(Double.MAX_VALUE));

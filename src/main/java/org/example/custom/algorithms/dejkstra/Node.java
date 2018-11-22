@@ -24,21 +24,27 @@ public final class Node implements Comparable<Node> {
 	//Geographical coordinates
 	private final BigDecimal x, y;
 
-	//Node does not have default or no-arg constructor
-	public Node(BigDecimal value, int index, BigDecimal x, BigDecimal y) {
-		this.value = value;
+	public Node(int index, String x, String y) {
+		this.value = null;
 		this.index = index;
-		this.x = x;
-		this.y = y;
+		this.x = new BigDecimal(x);
+		this.y = new BigDecimal(y);
 	}
 
+	public Node(int index, double x, double y) {
+		this.value = null;
+		this.index = index;
+		this.x = new BigDecimal(x);
+		this.y = new BigDecimal(y);
+	}
+
+	
 	//default-access constructor for test purposes
-	Node(BigDecimal value, int index, BigDecimal x, BigDecimal y, boolean visited) {
+	Node(BigDecimal value, int index, BigDecimal x, BigDecimal y) {
 		this.value = value;
 		this.index = index;
 		this.x = x;
 		this.y = y;
-		this.visited = visited;
 	}
 
 	public BigDecimal getX() {
@@ -53,7 +59,7 @@ public final class Node implements Comparable<Node> {
 		return value;
 	}
 
-	public void setValue(BigDecimal value) {
+	void setValue(BigDecimal value) {
 		this.value = value;
 	}
 
@@ -65,7 +71,7 @@ public final class Node implements Comparable<Node> {
 		return visited;
 	}
 
-	public void setVisited(boolean visited) {
+	void setVisited(boolean visited) {
 		this.visited = visited;
 	}
 

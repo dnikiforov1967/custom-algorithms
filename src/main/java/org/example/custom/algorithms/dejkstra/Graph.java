@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.NavigableMap;
 import java.util.TreeMap;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
 /**
@@ -35,16 +36,59 @@ public final class Graph {
 	//Binary red-black heap. Many nodes can have the same value - important !
 	NavigableMap<BigDecimal, NavigableMap<Integer, Node>> vertexToCheck = new TreeMap<>();
 
-	public Graph(BigDecimal[][] edges, Node... nodes) {
-		this.edges = edges;
+	public Graph(String[][] edges, Node... nodes) {
+		initializeNodes(nodes);
+		if (edges == null) {
+			this.edges = null;
+			return;
+		}
+		final Stream<String[]> edgesStream = Arrays.stream(edges);
+		this.edges = edgesStream.map(new Function<String[], BigDecimal[]>() {
+			@Override
+			public BigDecimal[] apply(String[] t) {
+				final Stream<BigDecimal> map
+						= Arrays.stream(t).map(
+								(e) -> {
+									return (e == null ? null : new BigDecimal(e));
+								});
+				final BigDecimal[] toArray = map.toArray(BigDecimal[]::new);
+				return toArray;
+			}
+		}).toArray(BigDecimal[][]::new);		
+	}
+
+	public Graph(Double[][] edges, Node... nodes) {
+		initializeNodes(nodes);
+		if (edges == null) {
+			this.edges = null;
+			return;
+		}
+		final Stream<Double[]> edgesStream = Arrays.stream(edges);
+		this.edges = edgesStream.map(new Function<Double[], BigDecimal[]>() {
+			@Override
+			public BigDecimal[] apply(Double[] t) {
+				final Stream<BigDecimal> map
+						= Arrays.stream(t).map(
+								(e) -> {
+									return (e == null ? null : new BigDecimal(e));
+								});
+				final BigDecimal[] toArray = map.toArray(BigDecimal[]::new);
+				return toArray;
+			}
+		}).toArray(BigDecimal[][]::new);
+	}
+
+	private void initializeNodes(Node[] nodes) {
 		final Stream<Node> stream = Arrays.stream(nodes);
-		//Append in both arrays
 		stream.forEach((t) -> {
-			if (t.getValue() == null) {
+			//Undefind values should be set to null if index is 0
+			if (t.getIndex() == 0 && t.getValue()==null) {
+				t.setValue(BigDecimal.ZERO);
+			} else if (t.getValue()==null) {
 				//Undefind values should be set to max possible double
 				t.setValue(new BigDecimal(Double.MAX_VALUE));
 			}
-			this.nodes.add(t);
+			this.nodes.add(t.getIndex(), t);
 			appendVertexToMap(t);
 		});
 	}
