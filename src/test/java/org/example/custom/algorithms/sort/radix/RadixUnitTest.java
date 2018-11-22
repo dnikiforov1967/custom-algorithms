@@ -47,6 +47,6 @@ public class RadixUnitTest {
 		int[] expectedArray = {1,2,4,5,6,7,7,8,10,11,12,13,16,22,22};
 		final RadixSort radixSort = new RadixSort();
 		radixSort.sort(array);
-		Arrays.stream(array).forEach((t)->System.out.println(t));
+		assertArrayEquals(expectedArray, array);
 	}
 }
