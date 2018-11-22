@@ -9,7 +9,7 @@ package org.example.custom.algorithms.sort.radix;
  *
  * @author dnikiforov
  */
-public class GenericRadixSort<T extends ByteWrapper> {
+public final class GenericRadixSort<T extends ByteWrapper> {
 
     private final int[] counters = new int[127]; //0..127 by byte value
 
