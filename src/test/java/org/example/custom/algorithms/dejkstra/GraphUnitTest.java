@@ -41,11 +41,11 @@ public class GraphUnitTest {
 	@Test
 	public void testNodeExtraction() {
 		Graph graph = new Graph((Double[][])null,
-				new Node(BigDecimal.TEN, 0, BigDecimal.TEN, BigDecimal.TEN),
-				new Node(BigDecimal.ONE, 1, BigDecimal.ONE, BigDecimal.ONE),
-				new Node(BigDecimal.ONE, 2, BigDecimal.ONE, BigDecimal.ONE));
+				new Graph.Node(BigDecimal.TEN, 0, BigDecimal.TEN, BigDecimal.TEN),
+				new Graph.Node(BigDecimal.ONE, 1, BigDecimal.ONE, BigDecimal.ONE),
+				new Graph.Node(BigDecimal.ONE, 2, BigDecimal.ONE, BigDecimal.ONE));
 
-		Node node = graph.extractNextNode();
+		Graph.Node node = graph.extractNextNode();
 		assertEquals(1, node.getIndex());
 		node = graph.extractNextNode();
 		assertEquals(2, node.getIndex());
@@ -57,16 +57,16 @@ public class GraphUnitTest {
 	@Test
 	public void testNodeRebalance() {
 
-		Node[] nodes = {
-			new Node(BigDecimal.TEN, 0, BigDecimal.TEN, BigDecimal.TEN),
-			new Node(BigDecimal.ONE, 1, BigDecimal.ONE, BigDecimal.ONE),
-			new Node(BigDecimal.ZERO, 2, BigDecimal.ZERO, BigDecimal.ZERO),
-			new Node(BigDecimal.ONE, 3, BigDecimal.ONE, BigDecimal.ONE)
+		Graph.Node[] nodes = {
+			new Graph.Node(BigDecimal.TEN, 0, BigDecimal.TEN, BigDecimal.TEN),
+			new Graph.Node(BigDecimal.ONE, 1, BigDecimal.ONE, BigDecimal.ONE),
+			new Graph.Node(BigDecimal.ZERO, 2, BigDecimal.ZERO, BigDecimal.ZERO),
+			new Graph.Node(BigDecimal.ONE, 3, BigDecimal.ONE, BigDecimal.ONE)
 		};
 
 		Graph graph = new Graph((String[][])null,nodes);
 
-		Node node = graph.extractNextNode();
+		Graph.Node node = graph.extractNextNode();
 		assertEquals(2, node.getIndex());
 		graph.rebalanceVertex(nodes[1], new BigDecimal("5.0"));
 		node = graph.extractNextNode();

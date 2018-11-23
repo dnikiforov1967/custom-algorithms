@@ -43,8 +43,8 @@ public class NodeComparableTest {
 	//
 	@Test
 	public void testComparable() {
-		Node nodeA = new Node(1, 0, 0);
-		Node nodeB = new Node(1, 0, 0);
+		Graph.Node nodeA = new Graph.Node(1, 0, 0);
+		Graph.Node nodeB = new Graph.Node(1, 0, 0);
 		
 		nodeA.setValue(BigDecimal.ONE);
 		nodeB.setValue(new BigDecimal(Double.MAX_VALUE));

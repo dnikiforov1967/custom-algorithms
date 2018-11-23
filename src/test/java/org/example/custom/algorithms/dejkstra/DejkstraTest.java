@@ -54,27 +54,27 @@ public class DejkstraTest {
 			{14.0, null, 2.0, null, 9.0, null}
 		};
 		
-		Node[] nodes = {
-			new Node(0, 0.0, 0.0),
-			new Node(1, 0.0, 0.0),
-			new Node(2, 0.0, 0.0),
-			new Node(3, 0.0, 0.0),
-			new Node(4, 0.0, 0.0),
-			new Node(5, 0.0, 0.0)
+		Graph.Node[] nodes = {
+			new Graph.Node(0, 0.0, 0.0),
+			new Graph.Node(1, 0.0, 0.0),
+			new Graph.Node(2, 0.0, 0.0),
+			new Graph.Node(3, 0.0, 0.0),
+			new Graph.Node(4, 0.0, 0.0),
+			new Graph.Node(5, 0.0, 0.0)
 		};
 
-		Node[] expectedNodes = {
-			new Node(BigDecimal.ZERO, 0, BigDecimal.ZERO, BigDecimal.ZERO),
-			new Node(new BigDecimal("7.0"), 1, BigDecimal.ZERO, BigDecimal.ZERO),
-			new Node(new BigDecimal("9.0"), 2, BigDecimal.ZERO, BigDecimal.ZERO),
-			new Node(new BigDecimal("20.0"), 3, BigDecimal.ZERO, BigDecimal.ZERO),
-			new Node(new BigDecimal("20.0"), 4, BigDecimal.ZERO, BigDecimal.ZERO),
-			new Node(new BigDecimal("11.0"), 5, BigDecimal.ZERO, BigDecimal.ZERO)
+		Graph.Node[] expectedNodes = {
+			new Graph.Node(BigDecimal.ZERO, 0, BigDecimal.ZERO, BigDecimal.ZERO),
+			new Graph.Node(new BigDecimal("7.0"), 1, BigDecimal.ZERO, BigDecimal.ZERO),
+			new Graph.Node(new BigDecimal("9.0"), 2, BigDecimal.ZERO, BigDecimal.ZERO),
+			new Graph.Node(new BigDecimal("20.0"), 3, BigDecimal.ZERO, BigDecimal.ZERO),
+			new Graph.Node(new BigDecimal("20.0"), 4, BigDecimal.ZERO, BigDecimal.ZERO),
+			new Graph.Node(new BigDecimal("11.0"), 5, BigDecimal.ZERO, BigDecimal.ZERO)
 		};
 		
 		final Graph graph = new Graph(edges, nodes);
 		graph.weightNodes();
-		final List<Node> returnResult = graph.returnResult();
+		final List<Graph.Node> returnResult = graph.returnResult();
 		
 		for(int i=0; i<returnResult.size(); i++) {
 			assertEquals(0, expectedNodes[i].compareTo(returnResult.get(i)));
@@ -94,27 +94,27 @@ public class DejkstraTest {
 			{"14.0", null, "2.0", null, null, null}
 		};
 		
-		Node[] nodes = {
-			new Node(0, "0.0", "0.0"),
-			new Node(1, "0.0", "0.0"),
-			new Node(2, "0.0", "0.0"),
-			new Node(3, "0.0", "0.0"),
-			new Node(4, "0.0", "0.0"),
-			new Node(5, "0.0", "0.0")
+		Graph.Node[] nodes = {
+			new Graph.Node(0, "0.0", "0.0"),
+			new Graph.Node(1, "0.0", "0.0"),
+			new Graph.Node(2, "0.0", "0.0"),
+			new Graph.Node(3, "0.0", "0.0"),
+			new Graph.Node(4, "0.0", "0.0"),
+			new Graph.Node(5, "0.0", "0.0")
 		};
 
-		Node[] expectedNodes = {
-			new Node(BigDecimal.ZERO, 0, BigDecimal.ZERO, BigDecimal.ZERO),
-			new Node(new BigDecimal("7.0"), 1, BigDecimal.ZERO, BigDecimal.ZERO),
-			new Node(new BigDecimal("9.0"), 2, BigDecimal.ZERO, BigDecimal.ZERO),
-			new Node(new BigDecimal("20.0"), 3, BigDecimal.ZERO, BigDecimal.ZERO),
-			new Node(new BigDecimal(Double.MAX_VALUE), 4, BigDecimal.ZERO, BigDecimal.ZERO),
-			new Node(new BigDecimal("11.0"), 5, BigDecimal.ZERO, BigDecimal.ZERO)
+		Graph.Node[] expectedNodes = {
+			new Graph.Node(BigDecimal.ZERO, 0, BigDecimal.ZERO, BigDecimal.ZERO),
+			new Graph.Node(new BigDecimal("7.0"), 1, BigDecimal.ZERO, BigDecimal.ZERO),
+			new Graph.Node(new BigDecimal("9.0"), 2, BigDecimal.ZERO, BigDecimal.ZERO),
+			new Graph.Node(new BigDecimal("20.0"), 3, BigDecimal.ZERO, BigDecimal.ZERO),
+			new Graph.Node(new BigDecimal(Double.MAX_VALUE), 4, BigDecimal.ZERO, BigDecimal.ZERO),
+			new Graph.Node(new BigDecimal("11.0"), 5, BigDecimal.ZERO, BigDecimal.ZERO)
 		};
 		
 		final Graph graph = new Graph(edges, nodes);
 		graph.weightNodes();
-		final List<Node> returnResult = graph.returnResult();
+		final List<Graph.Node> returnResult = graph.returnResult();
 		
 		for(int i=0; i<returnResult.size(); i++) {
 			assertEquals(0, expectedNodes[i].compareTo(returnResult.get(i)));
@@ -134,27 +134,27 @@ public class DejkstraTest {
 			{"14.0", null, "2.0", null, null, null}
 		};
 		
-		Node[] nodes = {
-			new Node(0, "0.0", "0.0"),
-			new Node(1, "0.0", "0.0"),
-			new Node(2, "0.0", "0.0"),
-			new Node(3, "0.0", "0.0"),
-			new Node(4, "0.0", "0.0"),
-			new Node(5, "0.0", "0.0")
+		Graph.Node[] nodes = {
+			new Graph.Node(0, "0.0", "0.0"),
+			new Graph.Node(1, "0.0", "0.0"),
+			new Graph.Node(2, "0.0", "0.0"),
+			new Graph.Node(3, "0.0", "0.0"),
+			new Graph.Node(4, "0.0", "0.0"),
+			new Graph.Node(5, "0.0", "0.0")
 		};
 
-		Node[] expectedNodes = {
-			new Node(BigDecimal.ZERO, 0, BigDecimal.ZERO, BigDecimal.ZERO),
-			new Node(new BigDecimal("7.0"), 1, BigDecimal.ZERO, BigDecimal.ZERO),
-			new Node(new BigDecimal("9.0"), 2, BigDecimal.ZERO, BigDecimal.ZERO),
-			new Node(new BigDecimal("20.0"), 3, BigDecimal.ZERO, BigDecimal.ZERO),
-			new Node(new BigDecimal(Double.MAX_VALUE), 4, BigDecimal.ZERO, BigDecimal.ZERO),
-			new Node(new BigDecimal("11.0"), 5, BigDecimal.ZERO, BigDecimal.ZERO)
+		Graph.Node[] expectedNodes = {
+			new Graph.Node(BigDecimal.ZERO, 0, BigDecimal.ZERO, BigDecimal.ZERO),
+			new Graph.Node(new BigDecimal("7.0"), 1, BigDecimal.ZERO, BigDecimal.ZERO),
+			new Graph.Node(new BigDecimal("9.0"), 2, BigDecimal.ZERO, BigDecimal.ZERO),
+			new Graph.Node(new BigDecimal("20.0"), 3, BigDecimal.ZERO, BigDecimal.ZERO),
+			new Graph.Node(new BigDecimal(Double.MAX_VALUE), 4, BigDecimal.ZERO, BigDecimal.ZERO),
+			new Graph.Node(new BigDecimal("11.0"), 5, BigDecimal.ZERO, BigDecimal.ZERO)
 		};
 		
 		final Graph graph = new Graph(edges, nodes);
 		graph.weightNodes();
-		final List<Node> returnResult = graph.returnResult();
+		final List<Graph.Node> returnResult = graph.returnResult();
 		
 		for(int i=0; i<returnResult.size(); i++) {
 			assertEquals(0, expectedNodes[i].compareTo(returnResult.get(i)));
