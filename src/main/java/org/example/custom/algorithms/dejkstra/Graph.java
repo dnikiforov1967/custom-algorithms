@@ -32,6 +32,7 @@ public final class Graph {
 	private final List<Node> sortedNodes = new LinkedList<>();
 	//Array of ages
 	private final BigDecimal[][] edges;
+	private static final BigDecimal MAX_VALUE = new BigDecimal(Double.MAX_VALUE);
 
 	//Binary red-black heap. Many nodes can have the same value - important !
 	NavigableMap<BigDecimal, NavigableMap<Integer, Node>> vertexToCheck = new TreeMap<>();
@@ -81,10 +82,12 @@ public final class Graph {
 				t.setValue(BigDecimal.ZERO);
 			} else if (t.getValue() == null) {
 				//Undefind values should be set to max possible double
-				t.setValue(new BigDecimal(Double.MAX_VALUE));
+				t.setValue(MAX_VALUE);
 			}
 			this.nodes.add(t.getIndex(), t);
-			appendVertexToMap(t);
+			if (t.getValue()!=null) {
+				appendVertexToMap(t);
+			}	
 		});
 	}
 
