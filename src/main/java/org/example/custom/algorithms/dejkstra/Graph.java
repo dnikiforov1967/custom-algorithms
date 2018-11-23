@@ -85,7 +85,7 @@ public final class Graph {
 				t.setValue(MAX_VALUE);
 			}
 			this.nodes.add(t.getIndex(), t);
-			if (t.getValue()!=null) {
+			if (t.getValue()!=null && !t.getValue().equals(MAX_VALUE)) {
 				appendVertexToMap(t);
 			}	
 		});
