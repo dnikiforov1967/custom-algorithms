@@ -14,6 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.NavigableMap;
+import java.util.Objects;
 import java.util.TreeMap;
 import java.util.function.Function;
 import java.util.stream.Stream;
@@ -25,6 +26,73 @@ import java.util.stream.Stream;
  * @author dnikiforov
  */
 public final class Graph {
+
+	class Edge {
+
+		private Node vertexA;
+		private Node vertexB;
+		private BigDecimal path;
+
+		Edge(Node vertexA, Node vertexB, BigDecimal path) {
+			this.vertexA = vertexA;
+			this.vertexB = vertexB;
+			this.path = path;
+		}
+
+		Node getVertexA() {
+			return vertexA;
+		}
+
+		void setVertexA(Node vertexA) {
+			this.vertexA = vertexA;
+		}
+
+		Node getVertexB() {
+			return vertexB;
+		}
+
+		void setVertexB(Node vertexB) {
+			this.vertexB = vertexB;
+		}
+
+		BigDecimal getPath() {
+			return path;
+		}
+
+		void setPath(BigDecimal path) {
+			this.path = path;
+		}
+
+		@Override
+		public int hashCode() {
+			int hash = 3;
+			hash = 31 * hash + Objects.hashCode(this.vertexA);
+			hash = 31 * hash + Objects.hashCode(this.vertexB);
+			return hash;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj) {
+				return true;
+			}
+			if (obj == null) {
+				return false;
+			}
+			if (getClass() != obj.getClass()) {
+				return false;
+			}
+			final Edge other = (Edge) obj;
+			if (!Objects.equals(this.vertexA, other.vertexA)) {
+				return false;
+			}
+			if (!Objects.equals(this.vertexB, other.vertexB)) {
+				return false;
+			}
+			return true;
+		}
+
+	}
 
 	//Original order
 	private final List<Node> nodes = new ArrayList<>();
@@ -85,9 +153,9 @@ public final class Graph {
 				t.setValue(MAX_VALUE);
 			}
 			this.nodes.add(t.getIndex(), t);
-			if (t.getValue()!=null && !t.getValue().equals(MAX_VALUE)) {
+			if (t.getValue() != null && !t.getValue().equals(MAX_VALUE)) {
 				appendVertexToMap(t);
-			}	
+			}
 		});
 	}
 
