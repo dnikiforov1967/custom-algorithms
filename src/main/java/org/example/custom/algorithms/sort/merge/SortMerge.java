@@ -5,8 +5,6 @@
  */
 package org.example.custom.algorithms.sort.merge;
 
-import java.util.List;
-
 /**
  *
  * @author dima
