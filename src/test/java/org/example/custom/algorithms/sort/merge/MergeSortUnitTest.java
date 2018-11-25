@@ -46,7 +46,7 @@ public class MergeSortUnitTest {
     public void testSwap() {
         Integer[] array = {1,2,4,3,5,6};
         Integer[] expectedArray = {1,2,3,4,5,6};
-        new SortMerge().swap(array, 2, 3);
+        SortMerge.swap(array, 2, 3);
         assertArrayEquals(expectedArray, array);
     }
     
@@ -54,7 +54,7 @@ public class MergeSortUnitTest {
     public void testSortEven() {
         Integer[] array = {1,4,6,2,5,3};
         Integer[] expectedArray = {1,2,3,4,5,6};
-        new SortMerge().sort(array);
+        SortMerge.sort(array);
         assertArrayEquals(expectedArray,array);
     }    
     
@@ -62,7 +62,7 @@ public class MergeSortUnitTest {
     public void testSortOdd() {
         Integer[] array = {1,7,4,6,2,5,3};
         Integer[] expectedArray = {1,2,3,4,5,6,7};
-        new SortMerge().sort(array);
+        SortMerge.sort(array);
         assertArrayEquals(expectedArray,array);
     }        
  
@@ -70,7 +70,7 @@ public class MergeSortUnitTest {
     public void testSortOddDoublets() {
         Integer[] array = {1,6,7,4,5,6,2,5,3};
         Integer[] expectedArray = {1,2,3,4,5,5,6,6,7};
-        new SortMerge().sort(array);
+        SortMerge.sort(array);
         assertArrayEquals(expectedArray,array);
     }    
     
@@ -78,7 +78,7 @@ public class MergeSortUnitTest {
     public void testSortEvenDoublets() {
         Integer[] array = {1,6,7,4,5,6,2,5,3,1};
         Integer[] expectedArray = {1,1,2,3,4,5,5,6,6,7};
-        new SortMerge().sort(array);
+        SortMerge.sort(array);
         assertArrayEquals(expectedArray,array);
     }        
     

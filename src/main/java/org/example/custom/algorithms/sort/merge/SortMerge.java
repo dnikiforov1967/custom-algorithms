@@ -9,20 +9,22 @@ package org.example.custom.algorithms.sort.merge;
  *
  * @author dima
  */
-public final class SortMerge<T extends Comparable<T>> {
+public final class SortMerge {
     
-    public void sort(final T[] array) {
+    private SortMerge() {}
+    
+    public static <T extends Comparable<T>> void sort(final T[] array) {
         //start from full range
         sort(array, 0, array.length-1);
     }
     
-    void swap(final T[] array, final int i, final int j) {
+    static <T extends Comparable<T>> void swap(final T[] array, final int i, final int j) {
         T t = array[i];
         array[i] = array[j];
         array[j] = t;
     }
     
-    private void sort(final T[] array, final int low, final int top) {
+    private static <T extends Comparable<T>> void sort(final T[] array, final int low, final int top) {
         if (low==top) return;
         if (low==top-1) {
             if (array[low].compareTo(array[top])==1) {
