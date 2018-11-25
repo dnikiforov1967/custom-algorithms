@@ -24,7 +24,7 @@ public final class SortMerge<T extends Comparable<T>> {
         array[j] = t;
     }
     
-    public void sort(final T[] array, final int low, final int top) {
+    private void sort(final T[] array, final int low, final int top) {
         if (low==top) return;
         if (low==top-1) {
             if (array[low].compareTo(array[top])==1) {
