@@ -210,7 +210,7 @@ public final class Graph {
 	//Binary red-black heap. Many nodes can have the same value - important !
 	NavigableMap<BigDecimal, NavigableMap<Integer, Node>> vertexToCheck = new TreeMap<>();
 
-	public Graph(String[][] edges, Node... nodes) {
+	public Graph(final String[][] edges, final Node... nodes) {
 		initializeNodes(nodes);
 		if (edges == null) {
 			this.edges = null;
@@ -229,7 +229,7 @@ public final class Graph {
 		).toArray(BigDecimal[][]::new);
 	}
 
-	public Graph(Double[][] edges, Node... nodes) {
+	public Graph(final Double[][] edges, final Node... nodes) {
 		initializeNodes(nodes);
 		if (edges == null) {
 			this.edges = null;
@@ -247,7 +247,7 @@ public final class Graph {
 		}).toArray(BigDecimal[][]::new);
 	}
 
-	private void initializeNodes(Node[] nodes) {
+	private void initializeNodes(final Node[] nodes) {
 		final Stream<Node> stream = Arrays.stream(nodes);
 		stream.forEach((t) -> {
 			//Undefind values should be set to null if index is 0
@@ -264,7 +264,7 @@ public final class Graph {
 		});
 	}
 
-	void appendVertexToMap(Node vertex) {
+	void appendVertexToMap(final Node vertex) {
 		final BigDecimal value = vertex.getValue();
 		NavigableMap<Integer, Node> map = vertexToCheck.get(value);
 		if (map == null) {
@@ -287,7 +287,7 @@ public final class Graph {
 		return node;
 	}
 
-	void removeVertexFromMap(Node vertex) {
+	void removeVertexFromMap(final Node vertex) {
 		final BigDecimal value = vertex.getValue();
 		final NavigableMap<Integer, Node> map = vertexToCheck.get(value);
 		if (map == null) {
