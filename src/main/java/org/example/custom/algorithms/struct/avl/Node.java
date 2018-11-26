@@ -3,22 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.example.custom.algorithms.struct.rbt;
+package org.example.custom.algorithms.struct.avl;
 
 /**
  *
  * @author dima
  */
 final class Node<T> {
-    private Color color = Color.RED;
+    private int height = 1;
     private Node left, right;
     private T value;
 
     Node(T value) {
         this.value = value;
-        left = new Node(null);
-        right = new Node(null);
-        left.color=Color.BLACK;
-        right.color=Color.BLACK;
     }
 }
