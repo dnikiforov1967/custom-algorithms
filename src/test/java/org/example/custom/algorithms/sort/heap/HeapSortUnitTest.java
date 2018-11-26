@@ -86,7 +86,7 @@ public class HeapSortUnitTest {
     public void testBuildHeapN() {
         Integer[] array = {4,1,7,12,5,8,2,6};
         Integer[] expectedArray = {12,6,8,4,5,7,2,1};
-		HeapSort.buildHeapN(array);
+		HeapSort.buildHeap(array);
 		assertArrayEquals(expectedArray, array);
     }
 	
