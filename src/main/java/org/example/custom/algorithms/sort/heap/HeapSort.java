@@ -50,7 +50,7 @@ public final class HeapSort {
 		
 	}
 
-	static <T extends Comparable<T>> void buildHeapNlogN(T[] array) {
+	public static <T extends Comparable<T>> void buildHeapNlogN(T[] array) {
 		for(int i=1; i<array.length; i++) {
 			buildHeapNlogN(array, i);
 		}
