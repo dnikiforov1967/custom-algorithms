@@ -9,7 +9,7 @@ package org.example.custom.algorithms.struct.avl;
  *
  * @author dima
  */
-final class Node<T> {
+final class Node<T extends Comparable<T>> {
     private int height = 1;
     private Node left, right;
     private T value;
