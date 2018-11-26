@@ -14,10 +14,6 @@ public final class HeapSort {
 	private HeapSort() {
 	}
 
-	public static <T extends Comparable<T>> void sort(T[] array) {
-
-	}
-
 	static int initialIndex(int idx) {
 		int rest = idx % 2;
 		if (rest == 0) {
@@ -59,5 +55,35 @@ public final class HeapSort {
 			buildHeapNlogN(array, i);
 		}
 	}
+	
+	private static <T extends Comparable<T>> int chooseIndexOfMaxElement(T[] array, int i, int j) {
+		return (array[j].compareTo(array[i])==1 ? j : i);
+	}
+	
+	static <T extends Comparable<T>> void rebuildHeap(T[] array, int heapEnd) {
+		int i = 0;
+		int j = 2*i + 1; 
+		while(j <= heapEnd) {
+			int iSwap = j;
+			if (j+1 <= heapEnd) {
+				iSwap = chooseIndexOfMaxElement(array, j, j+1);
+			}
+			if (array[i].compareTo(array[iSwap])==-1) {
+				swap(array, i, iSwap);
+				i = iSwap;
+				j = 2*i + 1;
+			} else {
+				break;
+			}
+		}
+	}
+	
+	public static <T extends Comparable<T>> void sort(T[] array) {
+		buildHeapNlogN(array);
+		for(int i=array.length-1; i>0; i--) {
+			swap(array, 0, i);
+			rebuildHeap(array, i-1);
+		}
+	}	
 
 }

@@ -66,5 +66,21 @@ public class HeapSortUnitTest {
     }	
 
 	
+    @Test
+    public void testSort() {
+        Integer[] array = {4,1,7,12,5,8,2,6};
+        Integer[] expectedArray = {1,2,4,5,6,7,8,12};
+		HeapSort.sort(array);
+		assertArrayEquals(expectedArray, array);
+    }		
+
+    @Test
+    public void testSortWithDoubles() {
+        Integer[] array = {4,1,5,7,12,5,8,2,7,6};
+        Integer[] expectedArray = {1,2,4,5,5,6,7,7,8,12};
+		HeapSort.sort(array);
+		assertArrayEquals(expectedArray, array);
+    }		
+	
 	
 }
