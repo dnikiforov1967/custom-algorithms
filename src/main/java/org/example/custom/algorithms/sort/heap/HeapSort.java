@@ -29,61 +29,68 @@ public final class HeapSort {
 		array[i] = array[j];
 		array[j] = x;
 	}
-	
+
 	private static <T extends Comparable<T>> void buildHeapNlogN(T[] array, int tail) {
 		//we suppose till tail it's a heap
 		int j = tail;
 		int i = initialIndex(j);
-		while(i>=0) {
-			if (array[i].compareTo(array[j])==-1) {
-				swap(array,i,j);
+		while (i >= 0) {
+			if (array[i].compareTo(array[j]) == -1) {
+				swap(array, i, j);
 				//Top element
-				if (i==0) {
+				if (i == 0) {
 					break;
-				}				
+				}
 				j = i;
 				i = initialIndex(j);
 			} else {
 				break;
 			}
 		}
-		
+
 	}
 
 	public static <T extends Comparable<T>> void buildHeapNlogN(T[] array) {
-		for(int i=1; i<array.length; i++) {
+		for (int i = 1; i < array.length; i++) {
 			buildHeapNlogN(array, i);
 		}
 	}
-	
-	private static <T extends Comparable<T>> int chooseIndexOfMaxElement(T[] array, int i, int j) {
-		return (array[j].compareTo(array[i])==1 ? j : i);
+
+	public static <T extends Comparable<T>> void buildHeapN(T[] array) {
+		for (int i = array.length / 2; i >= 0; i--) {
+			rebuildHeap(array, i, array.length-1);
+		}
 	}
-	
-	static <T extends Comparable<T>> void rebuildHeap(T[] array, int heapEnd) {
-		int i = 0;
-		int j = 2*i + 1; 
-		while(j <= heapEnd) {
-			int iSwap = j;
-			if (j+1 <= heapEnd) {
-				iSwap = chooseIndexOfMaxElement(array, j, j+1);
+
+	static <T extends Comparable<T>> void rebuildHeap(T[] array, int top, int heapEnd) {
+		int largestChild;
+		int leftChild;
+		int rightChild;
+		for (;;) {
+			largestChild = top;
+			leftChild = 2 * top + 1;
+			rightChild = 2 * top + 2;
+
+			if (leftChild <= heapEnd && array[leftChild].compareTo(array[largestChild]) == 1) {
+				largestChild = leftChild;
 			}
-			if (array[i].compareTo(array[iSwap])==-1) {
-				swap(array, i, iSwap);
-				i = iSwap;
-				j = 2*i + 1;
-			} else {
+			if (rightChild <= heapEnd && array[rightChild].compareTo(array[largestChild]) == 1) {
+				largestChild = rightChild;
+			}
+			if (largestChild == top) {
 				break;
 			}
+			swap(array, top, largestChild);
+			top = largestChild;
 		}
 	}
-	
+
 	public static <T extends Comparable<T>> void sort(T[] array) {
-		buildHeapNlogN(array);
-		for(int i=array.length-1; i>0; i--) {
+		buildHeapN(array);
+		for (int i = array.length - 1; i > 0; i--) {
 			swap(array, 0, i);
-			rebuildHeap(array, i-1);
+			rebuildHeap(array, 0, i - 1);
 		}
-	}	
+	}
 
 }
