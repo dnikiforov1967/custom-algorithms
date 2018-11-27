@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.example.custom.algorithms.struct.avl;
+package org.example.custom.algorithms.struct.randtree;
+
+import java.util.Map;
 
 /**
  *
- * @author dima
+ * @author dnikiforov
  */
-public final class AvlTree {
-    
+public class RandomTreeMap<K extends Comparable<K>, V extends Object> {
+	
 }
