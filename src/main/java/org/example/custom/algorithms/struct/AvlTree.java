@@ -52,9 +52,19 @@ public class AvlTree<K extends Comparable<K>, V> {
 		return b;
 	}
 
-	Node<K, V> bigRightTurn(Node<K,V> a) {
-		Node<K,V> b = a.left;
-		Node<K,V> c = b.right;
+	Node<K, V> smallLeftTurn(Node<K, V> a) {
+		final Node<K, V> b = a.right;
+		//Keep a.left;
+		//Keep b.right;
+		final Node<K, V> bleft = b.left;
+		a.right = bleft;
+		b.left = a;
+		return b;
+	}
+
+	Node<K, V> bigRightTurn(Node<K, V> a) {
+		Node<K, V> b = a.left;
+		Node<K, V> c = b.right;
 		//b.left kept
 		//a.right kept
 		b.right = c.left;
@@ -63,5 +73,17 @@ public class AvlTree<K extends Comparable<K>, V> {
 		c.right = a;
 		return c;
 	}
-	
+
+	Node<K, V> bigLeftTurn(Node<K, V> a) {
+		Node<K, V> b = a.right;
+		Node<K, V> c = b.left;
+		//a.left kept
+		//b.right kept
+		a.right = c.left;
+		b.left = c.right;
+		c.left = a;
+		c.right = b;
+		return c;
+	}
+
 }
