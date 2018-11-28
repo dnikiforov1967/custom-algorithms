@@ -21,8 +21,6 @@ public class AvlTree<K extends Comparable<K>, V> extends AbstractTree<K,V>  {
 
 	}
 
-	private Node head;
-
 	byte deep(Node node) {
 		return (node == null ? 0 : node.deep);
 	}
