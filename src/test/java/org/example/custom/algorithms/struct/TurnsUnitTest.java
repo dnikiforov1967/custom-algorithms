@@ -144,8 +144,68 @@ public class TurnsUnitTest {
 		newTop = abstractTree.smallRightTurn(nodeA);
 		assertEquals(nodeE,newTop);
 		
-	}	
+	}
 	
+	@Test
+	public void testBigLeftTurn() {
+		XNode nodeA = new XNode(1,"A");
+		XNode nodeL = new XNode(2,"L");
+		XNode nodeB = new XNode(3,"B");
+		XNode nodeC = new XNode(4,"C");
+		XNode nodeM = new XNode(5,"M");
+		XNode nodeN = new XNode(6,"N");
+		XNode nodeR = new XNode(7,"R");
+		
+		nodeA.setLeft(nodeL);
+		nodeA.setRight(nodeB);
+		
+		nodeB.setLeft(nodeC);
+		nodeB.setRight(nodeR);
+		
+		nodeC.setLeft(nodeM);
+		nodeC.setRight(nodeN);
+		
+		AbstractNode<Integer, String> newRoot = abstractTree.bigLeftTurn(nodeA);
+		assertEquals(nodeC, newRoot);
+		assertEquals(nodeA, nodeC.getLeft());
+		assertEquals(nodeB, nodeC.getRight());
+		assertEquals(nodeL, nodeA.getLeft());
+		assertEquals(nodeM, nodeA.getRight());
+		assertEquals(nodeN, nodeB.getLeft());
+		assertEquals(nodeR, nodeB.getRight());
+		
+	}
+	
+	@Test
+	public void testBigRightTurn() {
+		XNode nodeA = new XNode(1,"A");
+		XNode nodeL = new XNode(2,"L");
+		XNode nodeB = new XNode(3,"B");
+		XNode nodeC = new XNode(4,"C");
+		XNode nodeM = new XNode(5,"M");
+		XNode nodeN = new XNode(6,"N");
+		XNode nodeR = new XNode(7,"R");
+
+		
+		nodeA.setLeft(nodeB);
+		nodeA.setRight(nodeR);
+		
+		nodeB.setLeft(nodeL);
+		nodeB.setRight(nodeC);
+		
+		nodeC.setLeft(nodeM);
+		nodeC.setRight(nodeN);
+		
+		AbstractNode<Integer, String> newRoot = abstractTree.bigRightTurn(nodeA);
+		assertEquals(nodeC, newRoot);
+		assertEquals(nodeB, nodeC.getLeft());
+		assertEquals(nodeA, nodeC.getRight());
+		assertEquals(nodeN, nodeA.getLeft());
+		assertEquals(nodeR, nodeA.getRight());
+		assertEquals(nodeL, nodeB.getLeft());
+		assertEquals(nodeM, nodeB.getRight());
+		
+	}
 	
 	
 	
