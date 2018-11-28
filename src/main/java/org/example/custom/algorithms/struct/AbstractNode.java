@@ -62,7 +62,7 @@ public abstract class AbstractNode<K extends Comparable<K>, V> {
 		if (obj == null) {
 			return false;
 		}
-		if (getClass() != obj.getClass()) {
+		if (!(obj instanceof AbstractNode)) {
 			return false;
 		}
 		final AbstractNode<?, ?> other = (AbstractNode<?, ?>) obj;
@@ -70,6 +70,11 @@ public abstract class AbstractNode<K extends Comparable<K>, V> {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "AbstractNode{" + "key=" + key + '}';
 	}
 
 }
