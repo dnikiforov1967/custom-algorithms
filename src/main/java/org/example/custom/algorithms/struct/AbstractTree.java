@@ -12,9 +12,22 @@ package org.example.custom.algorithms.struct;
 public abstract class AbstractTree<K extends Comparable<K>, V> {
 
 	protected AbstractNode<K, V> head;
-	
-	public final AbstractNode<K, V> smallRightTurn(AbstractNode<K, V> a) {
+
+	/**
+	 * A	B
+	 * B	C	-->	D	A D	E	E	C
+	 *
+	 *
+	 *
+	 *
+	 * @param a Turn-around node
+	 * @return
+	 */
+	AbstractNode<K, V> smallRightTurn(AbstractNode<K, V> a) {
 		final AbstractNode<K, V> b = a.getLeft();
+		if (b == null) {
+			return a;
+		}
 		//Keep b.left;
 		//Keep a.right;
 		final AbstractNode<K, V> bright = b.getRight();
@@ -23,8 +36,21 @@ public abstract class AbstractTree<K extends Comparable<K>, V> {
 		return b;
 	}
 
+	/**
+	 * A	B
+	 * C	B	-->	A	E D	E	C	D
+	 *
+	 *
+	 *
+	 *
+	 * @param a Turn-around node
+	 * @return
+	 */
 	AbstractNode<K, V> smallLeftTurn(AbstractNode<K, V> a) {
 		final AbstractNode<K, V> b = a.getRight();
+		if (b == null) {
+			return a;
+		}
 		//Keep a.left;
 		//Keep b.right;
 		final AbstractNode<K, V> bleft = b.getLeft();
@@ -55,6 +81,6 @@ public abstract class AbstractTree<K extends Comparable<K>, V> {
 		c.setLeft(a);
 		c.setRight(b);
 		return c;
-	}	
-	
+	}
+
 }
