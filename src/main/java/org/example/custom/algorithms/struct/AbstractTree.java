@@ -26,7 +26,7 @@ public abstract class AbstractTree<K extends Comparable<K>, V> {
 	AbstractNode<K, V> smallRightTurn(AbstractNode<K, V> a) {
 		final AbstractNode<K, V> b = a.getLeft();
 		if (b == null) {
-			return a;
+			throw new IllegalStateException("Left subtree is null");
 		}
 		//Keep b.left;
 		//Keep a.right;
@@ -49,7 +49,7 @@ public abstract class AbstractTree<K extends Comparable<K>, V> {
 	AbstractNode<K, V> smallLeftTurn(AbstractNode<K, V> a) {
 		final AbstractNode<K, V> b = a.getRight();
 		if (b == null) {
-			return a;
+			throw new IllegalStateException("Right subtree is null");
 		}
 		//Keep a.left;
 		//Keep b.right;
@@ -71,9 +71,30 @@ public abstract class AbstractTree<K extends Comparable<K>, V> {
 		return c;
 	}
 
+	/**
+	 *						A
+	 *				L							B
+	 *								C	
+	 *							M		N				R
+	 * 
+	 *								||
+	 * 
+	 *								C
+	 *					A						B
+	 *				L		M				N		R
+	 * 
+	 * @param a
+	 * @return 
+	 */
 	AbstractNode<K, V> bigLeftTurn(AbstractNode<K, V> a) {
 		AbstractNode<K, V> b = a.getRight();
+		if (b==null) {
+			throw new IllegalStateException("Right subtree is null");
+		}
 		AbstractNode<K, V> c = b.getLeft();
+		if (c==null) {
+			throw new IllegalStateException("Left sub-subtree is null");
+		}
 		//a.left kept
 		//b.right kept
 		a.setRight(c.getLeft());

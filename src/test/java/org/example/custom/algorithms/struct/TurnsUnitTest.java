@@ -98,7 +98,7 @@ public class TurnsUnitTest {
 		
 	}
 	
-	@Test
+	@Test(expected = IllegalStateException.class)
 	public void smallTurnNullTest() {
 		XNode nodeA = new XNode(1,"A");
 		XNode nodeB = null;
@@ -108,8 +108,31 @@ public class TurnsUnitTest {
 		nodeA.setRight(nodeE);
 		
 		AbstractNode<Integer, String> newTop = abstractTree.smallRightTurn(nodeA);
-		assertEquals(nodeA,newTop);
-		newTop = abstractTree.smallLeftTurn(nodeA);
+		
+	}	
+
+	@Test(expected = IllegalStateException.class)
+	public void smallTurnNullTest2() {
+		XNode nodeA = new XNode(1,"A");
+		XNode nodeB = null;
+		XNode nodeE = new XNode(5,"E");
+		
+		nodeA.setLeft(nodeB);
+		nodeA.setRight(nodeE);
+		
+		AbstractNode<Integer, String> newTop = abstractTree.smallRightTurn(nodeA);
+	}
+
+	@Test
+	public void smallTurnNullTest3() {
+		XNode nodeA = new XNode(1,"A");
+		XNode nodeB = null;
+		XNode nodeE = new XNode(5,"E");
+		
+		nodeA.setLeft(nodeB);
+		nodeA.setRight(nodeE);
+		
+		AbstractNode<Integer, String> newTop = abstractTree.smallLeftTurn(nodeA);
 		assertEquals(nodeE,newTop);
 
 		nodeA = new XNode(1,"A");
@@ -117,13 +140,12 @@ public class TurnsUnitTest {
 		nodeE = new XNode(5,"E");
 		nodeA.setLeft(nodeE);
 		nodeA.setRight(nodeB);
-		newTop = abstractTree.smallLeftTurn(nodeA);
-		assertEquals(nodeA,newTop);
+
 		newTop = abstractTree.smallRightTurn(nodeA);
 		assertEquals(nodeE,newTop);
 		
 	}	
-
+	
 	
 	
 	
