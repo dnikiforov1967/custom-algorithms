@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.example.custom.algorithms.dejkstra;
+package org.example.custom.algorithms.graph.dejkstra;
 
+import org.example.custom.algorithms.graph.dejkstra.Graph;
 import java.math.BigDecimal;
 import org.junit.After;
 import org.junit.AfterClass;
