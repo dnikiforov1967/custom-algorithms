@@ -164,7 +164,7 @@ public class TurnsUnitTest {
 		
 		nodeC.setLeft(nodeM);
 		nodeC.setRight(nodeN);
-		
+
 		AbstractNode<Integer, String> newRoot = abstractTree.bigLeftTurn(nodeA);
 		assertEquals(nodeC, newRoot);
 		assertEquals(nodeA, nodeC.getLeft());
