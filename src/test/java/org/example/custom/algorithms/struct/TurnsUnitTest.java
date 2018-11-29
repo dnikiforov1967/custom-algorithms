@@ -17,20 +17,7 @@ import static org.junit.Assert.*;
  *
  * @author dnikiforov
  */
-public class TurnsUnitTest {
-	
-	static class XNode extends AbstractNode<Integer, String> {
-		
-		public XNode(Integer key, String value) {
-			super(key, value);
-		}
-		
-	}
-
-	final static AbstractTree<Integer, String> abstractTree = new AbstractTree<Integer, String>() {
-			
-	};
-
+public class TurnsUnitTest extends BaseTest {
 	
 	public TurnsUnitTest() {
 	}
