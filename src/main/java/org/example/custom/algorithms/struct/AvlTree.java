@@ -27,7 +27,7 @@ public class AvlTree<K extends Comparable<K>, V> extends AbstractTree<K,V>  {
 		return (node == null ? 0 : node.deep);
 	}
 
-	int bfactor(Node node) {
+	int diffLeftAndRight(Node node) {
 		return deep((Node)node.getLeft()) - deep((Node)node.getRight());
 	}
 
@@ -56,15 +56,22 @@ public class AvlTree<K extends Comparable<K>, V> extends AbstractTree<K,V>  {
 	Node balance(Node p)
 	{
 		fixheight(p); //Calc new height
-		if( bfactor(p)== -2 ) //left - right == -2
+		if( diffLeftAndRight(p)== -2 ) //left - right == -2
 		{
-			if( bfactor((Node)p.getRight()) <= 0 ) {
+			if( diffLeftAndRight((Node)p.getRight()) <= 0 ) {
 				p = (Node)smallLeftTurn(p);
 			} else {
 				p = (Node)bigLeftTurn(p);
 			}	
 		}
-		//TO DO mirror case
+		if (diffLeftAndRight(p)== 2) //left - right == 2
+		{
+			if( diffLeftAndRight((Node)p.getLeft()) <= 0 ) {
+				p = (Node)smallRightTurn(p);
+			} else {
+				p = (Node)bigRightTurn(p);
+			}	
+		}
 		return p; // No balance
 	}	
 
