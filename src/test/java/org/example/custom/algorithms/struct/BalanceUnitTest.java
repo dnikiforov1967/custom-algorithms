@@ -18,6 +18,7 @@ import static org.junit.Assert.*;
  */
 public class BalanceUnitTest extends BaseTest {
 	
+	
 	public BalanceUnitTest() {
 	}
 	
@@ -42,6 +43,19 @@ public class BalanceUnitTest extends BaseTest {
 	//
 	@Test
 	public void balanceOfListTest() {
-		
+		AvlTree<Integer, String> avlTree = new AvlTree<>();
+		final AvlTree.Node nodeA = avlTree.new Node(1,"A");
+		final AvlTree.Node nodeB = avlTree.new Node(2,"B");
+		final AvlTree.Node nodeC = avlTree.new Node(3,"C");
+		nodeB.setRight(nodeC);
+		avlTree.fixheight(nodeB);
+		assertEquals(2,nodeB.getDeep());
+		nodeA.setRight(nodeB);
+		avlTree.fixheight(nodeA);
+		assertEquals(3,nodeA.getDeep());
+		final AvlTree.Node balanced = avlTree.balance(nodeA);
+		assertEquals(nodeB, balanced);
+		assertEquals(nodeA, balanced.getLeft());
+		assertEquals(nodeC, balanced.getRight());
 	}
 }

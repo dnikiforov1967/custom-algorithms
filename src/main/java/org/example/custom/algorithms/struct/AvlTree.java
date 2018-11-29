@@ -11,12 +11,16 @@ package org.example.custom.algorithms.struct;
  */
 public class AvlTree<K extends Comparable<K>, V> extends AbstractTree<K,V>  {
 
-	private class Node extends AbstractNode<K,V> {
+	class Node extends AbstractNode<K,V> {
 
 		private byte deep = 1;
 
 		public Node(K key, V value) {
 			super(key, value);
+		}
+
+		public byte getDeep() {
+			return deep;
 		}
 
 	}
@@ -70,7 +74,13 @@ public class AvlTree<K extends Comparable<K>, V> extends AbstractTree<K,V>  {
 				p = (Node)bigRightTurn(p);
 			}	
 		}
-		return p; // No balance
-	}	
+		return p;
+	}
+
+	
+	public Node put(K key, V value) {
+		final Node node = new Node(key, value);
+		return node;
+	}
 
 }

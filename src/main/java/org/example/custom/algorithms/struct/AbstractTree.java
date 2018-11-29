@@ -85,4 +85,42 @@ public abstract class AbstractTree<K extends Comparable<K>, V> {
 		return smallLeftTurn(a);		
 	}
 
+	private AbstractNode<K, V> appendNode(AbstractNode<K, V> node) {
+		AbstractNode<K, V> ret = node;
+		if (head==null) {
+			head=node;
+		} else {
+			ret = appendNode(head, node);
+		}
+		return ret;
+	}
+
+	private AbstractNode<K, V> appendNode(AbstractNode<K, V> parent, AbstractNode<K, V> node) {
+		AbstractNode<K, V> ret = node;
+		if (parent.getKey().compareTo(node.getKey())==-1) { //parent < node
+			//Right branch
+			final AbstractNode<K, V> right = parent.getRight();
+			if (right==null || right.getKey().compareTo(node.getKey())==1) { //node < right
+				parent.setRight(node);
+				node.setRight(right);
+			} else { //node >= right
+				ret = appendNode(right, node);
+			}
+		} else if (parent.getKey().compareTo(node.getKey())==1) { //parent > node
+			//Left branch
+			final AbstractNode<K, V> left = parent.getLeft();
+			if (left==null || left.getKey().compareTo(node.getKey())==-1) { //left < node
+				parent.setLeft(node);
+				node.setLeft(left);
+			} else { //left >= node
+				ret = appendNode(left, node);
+			}
+		} else {
+			//Replace value
+			parent.setValue(node.getValue());
+			ret = parent;
+		}
+		return ret;
+	}
+	
 }

@@ -47,6 +47,10 @@ public abstract class AbstractNode<K extends Comparable<K>, V> {
 		return value;
 	}
 
+	protected final void setValue(V value) {
+		this.value = value;
+	}
+
 	@Override
 	public int hashCode() {
 		int hash = 7;
