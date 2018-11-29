@@ -80,7 +80,7 @@ public class AvlTree<K extends Comparable<K>, V> extends AbstractTree<K,V>  {
 	
 	public Node put(K key, V value) {
 		final Node node = new Node(key, value);
-		return node;
+		return (Node)super.appendNode(node);
 	}
 
 }

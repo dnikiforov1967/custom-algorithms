@@ -85,7 +85,7 @@ public abstract class AbstractTree<K extends Comparable<K>, V> {
 		return smallLeftTurn(a);		
 	}
 
-	private AbstractNode<K, V> appendNode(AbstractNode<K, V> node) {
+	protected AbstractNode<K, V> appendNode(AbstractNode<K, V> node) {
 		AbstractNode<K, V> ret = node;
 		if (head==null) {
 			head=node;
