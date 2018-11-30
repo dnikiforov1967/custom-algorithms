@@ -5,18 +5,11 @@
  */
 package org.example.custom.algorithms.struct;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
-
 /**
  *
  * @author dnikiforov
  */
-abstract class BaseTest {
+public abstract class BaseTest {
 	
 	static class XNode extends AbstractNode<Integer, String> {
 		

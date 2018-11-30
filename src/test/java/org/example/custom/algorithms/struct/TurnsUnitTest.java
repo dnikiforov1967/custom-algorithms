@@ -6,6 +6,7 @@ package org.example.custom.algorithms.struct;
  * and open the template in the editor.
  */
 
+import org.example.custom.algorithms.struct.AbstractNode;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

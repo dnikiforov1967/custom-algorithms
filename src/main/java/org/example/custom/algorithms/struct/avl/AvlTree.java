@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.example.custom.algorithms.struct;
+package org.example.custom.algorithms.struct.avl;
 
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Stack;
+import org.example.custom.algorithms.struct.AbstractNode;
+import org.example.custom.algorithms.struct.AbstractTree;
 
 /**
  *
@@ -45,7 +45,7 @@ public class AvlTree<K extends Comparable<K>, V> extends AbstractTree<K,V>  {
 	}
 
 	@Override
-	AbstractNode<K, V> smallLeftTurn(AbstractNode<K, V> a) {
+	protected AbstractNode<K, V> smallLeftTurn(AbstractNode<K, V> a) {
 		Node x = (Node)super.smallLeftTurn(a);
 		fixheight(x);
 		fixheight((Node)x.getLeft());
@@ -53,7 +53,7 @@ public class AvlTree<K extends Comparable<K>, V> extends AbstractTree<K,V>  {
 	}
 
 	@Override
-	AbstractNode<K, V> smallRightTurn(AbstractNode<K, V> a) {
+	protected AbstractNode<K, V> smallRightTurn(AbstractNode<K, V> a) {
 		Node x = (Node)super.smallRightTurn(a);
 		fixheight(x);
 		fixheight((Node)x.getRight());

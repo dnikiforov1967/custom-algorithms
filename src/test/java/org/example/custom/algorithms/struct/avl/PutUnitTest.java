@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.example.custom.algorithms.struct;
+package org.example.custom.algorithms.struct.avl;
 
+import org.example.custom.algorithms.struct.BaseTest;
+import org.example.custom.algorithms.struct.avl.AvlTree;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

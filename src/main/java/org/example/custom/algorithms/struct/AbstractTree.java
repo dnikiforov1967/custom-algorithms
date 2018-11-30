@@ -20,7 +20,7 @@ public abstract class AbstractTree<K extends Comparable<K>, V> {
 	 * @param a Turn-around node
 	 * @return new Top-node
 	 */
-	AbstractNode<K, V> smallRightTurn(AbstractNode<K, V> a) {
+	protected AbstractNode<K, V> smallRightTurn(AbstractNode<K, V> a) {
 		if (a == null) {
 			throw new IllegalStateException("Root is null");
 		}		
@@ -41,7 +41,7 @@ public abstract class AbstractTree<K extends Comparable<K>, V> {
 	 * @param a Turn-around node
 	 * @return new Top-node
 	 */
-	AbstractNode<K, V> smallLeftTurn(AbstractNode<K, V> a) {
+	protected AbstractNode<K, V> smallLeftTurn(AbstractNode<K, V> a) {
 		if (a == null) {
 			throw new IllegalStateException("Root is null");
 		}
@@ -62,7 +62,7 @@ public abstract class AbstractTree<K extends Comparable<K>, V> {
 	 * @param a Turn-around node
 	 * @return new Top-node
 	 */
-	AbstractNode<K, V> bigRightTurn(AbstractNode<K, V> a) {
+	protected AbstractNode<K, V> bigRightTurn(AbstractNode<K, V> a) {
 		if (a == null) {
 			throw new IllegalStateException("Root is null");
 		}
@@ -77,7 +77,7 @@ public abstract class AbstractTree<K extends Comparable<K>, V> {
 	 * @param a Turn-around node
 	 * @return new Top-node
 	 */
-	AbstractNode<K, V> bigLeftTurn(AbstractNode<K, V> a) {
+	protected AbstractNode<K, V> bigLeftTurn(AbstractNode<K, V> a) {
 		if (a == null) {
 			throw new IllegalStateException("Root is null");
 		}
