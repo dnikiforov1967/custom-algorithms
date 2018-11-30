@@ -83,6 +83,9 @@ public abstract class AbstractTree<K extends Comparable<K>, V> {
         AbstractNode<K, V> last = path.poll();
         while (last != null) {
             final AbstractNode<K, V> balanced = balance(last);
+            if (last.equals(balanced)) {
+                break;
+            }
             last = path.poll();
             if (last == null) {
                 head = balanced;
