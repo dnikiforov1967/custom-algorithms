@@ -72,6 +72,10 @@ public abstract class AbstractTree<K extends Comparable<K>, V> {
 		return smallRightTurn(a);
 	}
 
+	protected abstract AbstractNode<K, V> balance(AbstractNode<K, V> node);
+	protected abstract int fixheight(AbstractNode<K, V> node);
+	protected abstract int diffLeftAndRight(AbstractNode<K, V> node);
+	
 	/**
 	 * 
 	 * @param a Turn-around node

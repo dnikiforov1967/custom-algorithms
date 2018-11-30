@@ -29,19 +29,21 @@ public class AvlTree<K extends Comparable<K>, V> extends AbstractTree<K,V>  {
 
 	}
 
-	byte deep(Node node) {
+	private byte deep(Node node) {
 		return (node == null ? 0 : node.deep);
 	}
 
-	int diffLeftAndRight(Node node) {
+	@Override
+	protected int diffLeftAndRight(AbstractNode<K, V> node) {
 		return deep((Node)node.getLeft()) - deep((Node)node.getRight());
 	}
 
-	int fixheight(Node node) {
+	@Override
+	protected int fixheight(AbstractNode<K, V> node) {
 		byte hl = deep((Node)node.getLeft());
 		byte hr = deep((Node)node.getRight());
-		node.deep = (byte) ((hl > hr ? hl : hr) + 1);
-		return node.deep;
+		((Node)node).deep = (byte) ((hl > hr ? hl : hr) + 1);
+		return ((Node)node).deep;
 	}
 
 	@Override
@@ -60,7 +62,8 @@ public class AvlTree<K extends Comparable<K>, V> extends AbstractTree<K,V>  {
 		return x;
 	}
 	
-	Node balance(Node p)
+	@Override
+	protected AbstractNode<K,V> balance(AbstractNode<K,V> p)
 	{
 		final int d = fixheight(p); //Calc new height
 		final int diff = diffLeftAndRight(p);
