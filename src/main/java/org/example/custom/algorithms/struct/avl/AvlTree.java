@@ -93,12 +93,7 @@ public class AvlTree<K extends Comparable<K>, V> extends AbstractTree<K,V>  {
 		LinkedList<AbstractNode<K,V>> path = new LinkedList<>();
 		final Node node = new Node(key, value);
 		final AbstractNode<K,V> assigned = super.appendNode(node, path);
-		balance(assigned);
-		AbstractNode<K, V> last = path.pollLast();
-		while(last!=null) {
-			balance(last);
-			last = path.pollLast();
-		}
+		rebalance(assigned, path);
 		return assigned;
 	}
 
