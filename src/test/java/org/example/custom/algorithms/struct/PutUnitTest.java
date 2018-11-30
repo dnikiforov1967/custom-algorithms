@@ -44,8 +44,8 @@ public class PutUnitTest extends BaseTest {
 	public void putTestLeft() {
 		AvlTree<Integer, String> avlTree = new AvlTree<>();
 		final AvlTree.Node nodeC = avlTree.put(3, "C");
+		final AvlTree.Node nodeA = avlTree.put(1, "A");		
 		final AvlTree.Node nodeB = avlTree.put(2, "B");
-		final AvlTree.Node nodeA = avlTree.put(1, "A");
 		assertEquals(nodeA, nodeB.getLeft());
 		assertEquals(nodeC, nodeB.getRight());
 	}
