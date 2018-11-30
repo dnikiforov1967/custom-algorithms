@@ -5,6 +5,10 @@
  */
 package org.example.custom.algorithms.struct;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Stack;
+
 /**
  *
  * @author dnikiforov
@@ -33,10 +37,11 @@ public class AvlTree<K extends Comparable<K>, V> extends AbstractTree<K,V>  {
 		return deep((Node)node.getLeft()) - deep((Node)node.getRight());
 	}
 
-	void fixheight(Node node) {
+	int fixheight(Node node) {
 		byte hl = deep((Node)node.getLeft());
 		byte hr = deep((Node)node.getRight());
 		node.deep = (byte) ((hl > hr ? hl : hr) + 1);
+		return node.deep;
 	}
 
 	@Override
@@ -57,18 +62,21 @@ public class AvlTree<K extends Comparable<K>, V> extends AbstractTree<K,V>  {
 	
 	Node balance(Node p)
 	{
-		fixheight(p); //Calc new height
-		if( diffLeftAndRight(p)== -2 ) //left - right == -2
+		final int d = fixheight(p); //Calc new height
+		final int diff = diffLeftAndRight(p);
+		if( diff== -2 ) //left - right == -2
 		{
-			if( diffLeftAndRight((Node)p.getRight()) <= 0 ) {
+			final Node b = (Node)p.getRight();
+			if( diffLeftAndRight(b) <= 0 ) {
 				p = (Node)smallLeftTurn(p);
 			} else {
 				p = (Node)bigLeftTurn(p);
 			}	
 		}
-		if (diffLeftAndRight(p)== 2) //left - right == 2
+		if (diff== 2) //left - right == 2
 		{
-			if( diffLeftAndRight((Node)p.getLeft()) <= 0 ) {
+			final Node b = (Node)p.getLeft();
+			if( diffLeftAndRight(b) > 0 ) {
 				p = (Node)smallRightTurn(p);
 			} else {
 				p = (Node)bigRightTurn(p);
@@ -79,8 +87,16 @@ public class AvlTree<K extends Comparable<K>, V> extends AbstractTree<K,V>  {
 
 	
 	public Node put(K key, V value) {
+		LinkedList<AbstractNode<K,V>> path = new LinkedList<>();
 		final Node node = new Node(key, value);
-		return (Node)super.appendNode(node);
+		final Node assigned = (Node)super.appendNode(node, path);
+		balance(assigned);
+		AbstractNode<K, V> last = path.pollLast();
+		while(last!=null) {
+			balance((Node)last);
+			last = path.pollLast();
+		}
+		return assigned;
 	}
 
 }

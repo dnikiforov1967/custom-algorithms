@@ -41,12 +41,23 @@ public class PutUnitTest extends BaseTest {
 	// The methods must be annotated with annotation @Test. For example:
 	//
 	@Test
-	public void putTest() {
+	public void putTestLeft() {
 		AvlTree<Integer, String> avlTree = new AvlTree<>();
 		final AvlTree.Node nodeC = avlTree.put(3, "C");
 		final AvlTree.Node nodeB = avlTree.put(2, "B");
 		final AvlTree.Node nodeA = avlTree.put(1, "A");
-		assertEquals(nodeB, nodeC.getLeft());
 		assertEquals(nodeA, nodeB.getLeft());
+		assertEquals(nodeC, nodeB.getRight());
 	}
+	
+	@Test
+	public void putTestRight() {
+		AvlTree<Integer, String> avlTree = new AvlTree<>();
+		final AvlTree.Node nodeA = avlTree.put(1, "A");
+		final AvlTree.Node nodeC = avlTree.put(3, "C");
+		final AvlTree.Node nodeB = avlTree.put(2, "B");
+		assertEquals(nodeA, nodeB.getLeft());
+		assertEquals(nodeC, nodeB.getRight());
+	}	
+	
 }
