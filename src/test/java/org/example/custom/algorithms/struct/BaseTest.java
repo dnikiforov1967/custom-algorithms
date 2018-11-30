@@ -34,6 +34,11 @@ public abstract class BaseTest {
 		protected int diffLeftAndRight(AbstractNode<Integer, String> node) {
 			throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 		}
+
+		@Override
+		public AbstractNode<Integer, String> put(Integer key, String value) {
+			throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		}
 			
 	};	
 }

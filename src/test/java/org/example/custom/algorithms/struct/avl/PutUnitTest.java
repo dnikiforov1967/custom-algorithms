@@ -5,6 +5,7 @@
  */
 package org.example.custom.algorithms.struct.avl;
 
+import org.example.custom.algorithms.struct.AbstractNode;
 import org.example.custom.algorithms.struct.BaseTest;
 import org.example.custom.algorithms.struct.avl.AvlTree;
 import org.junit.After;
@@ -45,9 +46,9 @@ public class PutUnitTest extends BaseTest {
 	@Test
 	public void putTestLeft() {
 		AvlTree<Integer, String> avlTree = new AvlTree<>();
-		final AvlTree.Node nodeC = avlTree.put(3, "C");
-		final AvlTree.Node nodeA = avlTree.put(1, "A");		
-		final AvlTree.Node nodeB = avlTree.put(2, "B");
+		final AbstractNode<Integer, String> nodeC = avlTree.put(3, "C");
+		final AbstractNode<Integer, String> nodeA = avlTree.put(1, "A");		
+		final AbstractNode<Integer, String> nodeB = avlTree.put(2, "B");
 		assertEquals(nodeA, nodeB.getLeft());
 		assertEquals(nodeC, nodeB.getRight());
 	}
@@ -55,9 +56,9 @@ public class PutUnitTest extends BaseTest {
 	@Test
 	public void putTestRight() {
 		AvlTree<Integer, String> avlTree = new AvlTree<>();
-		final AvlTree.Node nodeA = avlTree.put(1, "A");
-		final AvlTree.Node nodeC = avlTree.put(3, "C");
-		final AvlTree.Node nodeB = avlTree.put(2, "B");
+		final AbstractNode<Integer, String> nodeA = avlTree.put(1, "A");
+		final AbstractNode<Integer, String> nodeC = avlTree.put(3, "C");
+		final AbstractNode<Integer, String> nodeB = avlTree.put(2, "B");
 		assertEquals(nodeA, nodeB.getLeft());
 		assertEquals(nodeC, nodeB.getRight());
 	}	

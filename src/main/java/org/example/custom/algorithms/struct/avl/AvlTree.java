@@ -15,7 +15,7 @@ import org.example.custom.algorithms.struct.AbstractTree;
  */
 public class AvlTree<K extends Comparable<K>, V> extends AbstractTree<K,V>  {
 
-	class Node extends AbstractNode<K,V> {
+	private class Node extends AbstractNode<K,V> {
 
 		private byte deep = 1;
 
@@ -89,14 +89,14 @@ public class AvlTree<K extends Comparable<K>, V> extends AbstractTree<K,V>  {
 	}
 
 	
-	public Node put(K key, V value) {
+	public AbstractNode<K,V> put(K key, V value) {
 		LinkedList<AbstractNode<K,V>> path = new LinkedList<>();
 		final Node node = new Node(key, value);
-		final Node assigned = (Node)super.appendNode(node, path);
+		final AbstractNode<K,V> assigned = super.appendNode(node, path);
 		balance(assigned);
 		AbstractNode<K, V> last = path.pollLast();
 		while(last!=null) {
-			balance((Node)last);
+			balance(last);
 			last = path.pollLast();
 		}
 		return assigned;

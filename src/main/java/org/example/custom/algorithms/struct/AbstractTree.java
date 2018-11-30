@@ -130,4 +130,6 @@ public abstract class AbstractTree<K extends Comparable<K>, V> {
 		return ret;
 	}
 	
+	public abstract AbstractNode<K,V> put(K key, V value);
+	
 }
