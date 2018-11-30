@@ -5,6 +5,8 @@
  */
 package org.example.custom.algorithms.struct;
 
+import java.util.Deque;
+
 /**
  *
  * @author dnikiforov
@@ -85,18 +87,19 @@ public abstract class AbstractTree<K extends Comparable<K>, V> {
 		return smallLeftTurn(a);		
 	}
 
-	protected AbstractNode<K, V> appendNode(AbstractNode<K, V> node) {
+	protected AbstractNode<K, V> appendNode(AbstractNode<K, V> node, Deque<AbstractNode<K, V>> path) {
 		AbstractNode<K, V> ret = node;
 		if (head==null) {
 			head=node;
 		} else {
-			ret = appendNode(head, node);
+			ret = appendNode(head, node, path);
 		}
 		return ret;
 	}
 
-	private AbstractNode<K, V> appendNode(AbstractNode<K, V> parent, AbstractNode<K, V> node) {
+	private AbstractNode<K, V> appendNode(AbstractNode<K, V> parent, AbstractNode<K, V> node, Deque<AbstractNode<K, V>> path) {
 		AbstractNode<K, V> ret = node;
+		path.add(parent);
 		if (parent.getKey().compareTo(node.getKey())==-1) { //parent < node
 			//Right branch
 			final AbstractNode<K, V> right = parent.getRight();
@@ -104,7 +107,7 @@ public abstract class AbstractTree<K extends Comparable<K>, V> {
 				parent.setRight(node);
 				node.setRight(right);
 			} else { //node >= right
-				ret = appendNode(right, node);
+				ret = appendNode(right, node, path);
 			}
 		} else if (parent.getKey().compareTo(node.getKey())==1) { //parent > node
 			//Left branch
@@ -113,7 +116,7 @@ public abstract class AbstractTree<K extends Comparable<K>, V> {
 				parent.setLeft(node);
 				node.setLeft(left);
 			} else { //left >= node
-				ret = appendNode(left, node);
+				ret = appendNode(left, node, path);
 			}
 		} else {
 			//Replace value
