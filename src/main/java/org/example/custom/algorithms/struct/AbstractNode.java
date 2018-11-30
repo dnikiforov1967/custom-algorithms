@@ -15,7 +15,7 @@ public abstract class AbstractNode<K extends Comparable<K>, V> {
 
 	private AbstractNode<K, V> left, right;
 
-	private K key;
+	private final K key;
 	private V value;
 
 	public AbstractNode(K key, V value) {
@@ -80,5 +80,5 @@ public abstract class AbstractNode<K extends Comparable<K>, V> {
 	public String toString() {
 		return "AbstractNode{" + "key=" + key + '}';
 	}
-
+	
 }
