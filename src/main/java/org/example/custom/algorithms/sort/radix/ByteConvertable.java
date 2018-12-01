@@ -16,12 +16,24 @@
 package org.example.custom.algorithms.sort.radix;
 
 /**
- *
+ * Interface defines methods what allow to convert object into customized byte representation
+ * 
  * @author dnikiforov
  */
 interface ByteConvertable {
 
+        /**
+         * Method returns byte representation of object in accordance to custom need
+         * The representation should have the fixed length
+         * 
+         * @return byte representation of objekt
+         */
 	byte[] toByteArray();
 
+        /**
+         * Method returns the fixed length of byte representation
+         * 
+         * @return fixed length of representation 
+         */
 	int getFixedLength();
 }
