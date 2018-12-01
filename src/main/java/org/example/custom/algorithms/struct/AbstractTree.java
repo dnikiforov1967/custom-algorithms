@@ -159,7 +159,7 @@ public abstract class AbstractTree<K extends Comparable<K>, V> {
 
     public abstract AbstractNode<K, V> put(K key, V value);
 
-    public AbstractNode<K, V> get(K key) {
+    public final AbstractNode<K, V> get(K key) {
         return find(head, key);
     }
 
