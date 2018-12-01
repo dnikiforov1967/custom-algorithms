@@ -353,7 +353,7 @@ public final class Graph {
 
         /**
          * Method returns unmodifyable list of vertexes
-         * @return 
+         * @return immutable list of existing nodes
          */
 	public List<Node> returnResult() {
 		final List<Node> unmodifiableList = Collections.unmodifiableList(nodes);

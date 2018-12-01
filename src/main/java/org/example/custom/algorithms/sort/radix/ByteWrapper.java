@@ -42,7 +42,7 @@ public abstract class ByteWrapper<T> implements ByteConvertable {
 
         /**
          * Method maps object to byte array
-         * @return 
+         * @return byte representation of object
          */
 	abstract protected byte[] convert();
 	
