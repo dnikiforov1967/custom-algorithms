@@ -5,11 +5,8 @@
  */
 package org.example.custom.algorithms.struct.avl;
 
-import java.util.Deque;
-import java.util.LinkedList;
 import org.example.custom.algorithms.struct.AbstractNode;
 import org.example.custom.algorithms.struct.BaseTest;
-import org.example.custom.algorithms.struct.avl.AvlTree;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
