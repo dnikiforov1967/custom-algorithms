@@ -7,7 +7,6 @@ package org.example.custom.algorithms.struct.avl;
 
 import org.example.custom.algorithms.struct.AbstractNode;
 import org.example.custom.algorithms.struct.BaseTest;
-import org.example.custom.algorithms.struct.avl.AvlTree;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -39,7 +38,7 @@ public class PutUnitTest extends BaseTest {
 	@After
 	public void tearDown() {
 	}
-
+        
 	// TODO add test methods here.
 	// The methods must be annotated with annotation @Test. For example:
 	//

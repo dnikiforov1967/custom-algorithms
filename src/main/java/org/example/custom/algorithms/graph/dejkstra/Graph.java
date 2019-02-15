@@ -1,7 +1,17 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright 2018
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package org.example.custom.algorithms.graph.dejkstra;
 
@@ -19,8 +29,8 @@ import java.util.TreeMap;
 import java.util.stream.Stream;
 
 /**
- ** This class provides methods to find optimal ways between vertexes in
- * weighted equal-directional graph
+ ** This class provides method to find optimal ways between vertexes in
+ **  equal-weighted directional graph.
  *
  * @author dnikiforov
  */
@@ -210,6 +220,12 @@ public final class Graph {
 	//Binary red-black heap. Many nodes can have the same value - important !
 	NavigableMap<BigDecimal, NavigableMap<Integer, Node>> vertexToCheck = new TreeMap<>();
 
+        /**
+         * Constructor
+         * 
+         * @param edges The matrix, which is responsible to keep path values from one vertex to another 
+         * @param nodes The list of nodes. The start node should always have index = 0.
+         */
 	public Graph(final String[][] edges, final Node... nodes) {
 		initializeNodes(nodes);
 		if (edges == null) {
@@ -229,6 +245,12 @@ public final class Graph {
 		).toArray(BigDecimal[][]::new);
 	}
 
+        /**
+         * Constructor
+         * 
+         * @param edges The matrix, which is responsible to keep path values from one vertex to another 
+         * @param nodes The list of nodes. The start node should always have index = 0.
+         */        
 	public Graph(final Double[][] edges, final Node... nodes) {
 		initializeNodes(nodes);
 		if (edges == null) {
@@ -320,12 +342,19 @@ public final class Graph {
 		return nextNode;
 	}
 
+        /**
+         * Method prints node list in accordance with overloaded toString() method
+         */
 	public void printNodes() {
 		sortedNodes.forEach((t) -> {
 			System.out.println(t);
 		});
 	}
 
+        /**
+         * Method returns unmodifyable list of vertexes
+         * @return immutable list of existing nodes
+         */
 	public List<Node> returnResult() {
 		final List<Node> unmodifiableList = Collections.unmodifiableList(nodes);
 		return unmodifiableList;
