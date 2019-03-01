@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.example.custom.algorithms.prime;
+package org.example.custom.algorithms.nums;
 
 import java.util.Arrays;
-import org.example.custom.algorithms.nums.NumbersHelper;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
