@@ -19,6 +19,18 @@ public final class NumbersHelper {
 
 	}
 
+	public static Queue<Integer> fibonacci(int n) {
+		Queue<Integer> queue = new LinkedList<>();
+		int digA=0, digB=1;
+		while(digB<=n) {
+			queue.add(digB);
+			int s = digB;
+			digB = digA + digB;
+			digA = s;
+		}
+		return queue;
+	}
+	
 	/**
 	 * Method returns the queue of prime numbers <= n
 	 * @param n
