@@ -17,8 +17,8 @@ public final class ArrayHelper {
 	public static void reverese(int[] A, int i, int j) {
 		while (i < j) {
 			int temp = A[j];
-			A[j] = A[i];
-			A[i] = temp;
+			A[j--] = A[i];
+			A[i++] = temp;
 		}
 	}
 
