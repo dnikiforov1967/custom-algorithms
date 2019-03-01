@@ -5,22 +5,36 @@
  */
 package org.example.custom.algorithms.prime;
 
-import java.util.function.IntFunction;
+import java.util.Arrays;
 import org.example.custom.algorithms.nums.NumbersHelper;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
 import static org.junit.Assert.*;
+
+class Solution {
+    public int[] deckRevealedIncreasing(int[] deck) {
+		
+        //The first card should be always minimal
+        int[] reorder = new int[deck.length];
+        Arrays.sort(deck); //sort in increase
+        for(int i=0; i<deck.length; i++) {
+			int start=0;
+			for(int j=start; j<deck.length; j += 2)
+				reorder[j] = deck[i];
+		}
+		return reorder;
+    }
+}
 
 /**
  *
  * @author dnikiforov
  */
-public class HumberHelperTest {
+public class NumberHelperTest {
 
-	public HumberHelperTest() {
+	public NumberHelperTest() {
 	}
 
 	@BeforeClass
@@ -39,7 +53,7 @@ public class HumberHelperTest {
 	public void tearDown() {
 	}
 
-	@Test
+	//@Test
 	public void gcdTest() {
 		assertEquals(1, NumbersHelper.findGCD(13, 44));
 		assertEquals(11, NumbersHelper.findGCD(11, 44));
@@ -47,7 +61,7 @@ public class HumberHelperTest {
 		assertEquals(3, NumbersHelper.findGCD(15, 9));
 	}
 	
-	@Test
+	//@Test
 	public void primeTest() {
 		final int[] primes = new int[5];
 		final int[] muster = new int[] {2,3,5,7,11};

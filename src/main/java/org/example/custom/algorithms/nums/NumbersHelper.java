@@ -19,6 +19,11 @@ public final class NumbersHelper {
 
 	}
 
+	/**
+	 * Method returns the queue of prime numbers <= n
+	 * @param n
+	 * @return 
+	 */
 	public static Queue<Integer> primeNumbers(int n) {
 		Queue<Integer> queue = new LinkedList<>();
 		Queue<Integer> out = new LinkedList<>();
