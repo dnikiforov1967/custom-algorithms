@@ -5,7 +5,6 @@
  */
 package org.example.custom.algorithms.nums;
 
-import java.util.Arrays;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -13,20 +12,6 @@ import org.junit.BeforeClass;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-class Solution {
-    public int[] deckRevealedIncreasing(int[] deck) {
-		
-        //The first card should be always minimal
-        int[] reorder = new int[deck.length];
-        Arrays.sort(deck); //sort in increase
-        for(int i=0; i<deck.length; i++) {
-			int start=0;
-			for(int j=start; j<deck.length; j += 2)
-				reorder[j] = deck[i];
-		}
-		return reorder;
-    }
-}
 
 /**
  *
